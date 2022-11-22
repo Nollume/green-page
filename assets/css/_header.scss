@@ -1,0 +1,86 @@
+%center-flex {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+//
+// general
+//
+header {
+  width: 100%;
+
+  z-index: 4;
+  background-color: $bg-color;
+  border-bottom: 0.0625rem solid $border-color;
+
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 1fr;
+}
+
+//
+// logo
+//
+.logo {
+  place-self: start;
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  gap: 0.15rem;
+
+  padding: 2rem;
+
+  cursor: pointer;
+
+  p {
+    font-size: 0.75rem;
+    letter-spacing: -0.5px;
+    line-height: 0.75rem;
+  }
+}
+//
+// nav
+//
+nav {
+  display: flex;
+  justify-content: center;
+  border-left: 0.0625rem solid $border-color;
+  padding-block: 2rem;
+  width: 100%;
+}
+nav > ul {
+  @extend %center-flex;
+}
+nav > ul a {
+  text-transform: uppercase;
+}
+
+//
+// social icons
+//
+.social-icons {
+  @extend %center-flex;
+  padding-block: 2rem;
+  justify-content: center;
+  border-left: 0.0625rem solid $border-color;
+}
+
+//
+// contacts
+//
+
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 2rem;
+  text-transform: uppercase;
+  border-left: 0.0625rem solid $border-color;
+  cursor: pointer;
+
+  &:is(:hover, :active) {
+    background-color: darken($bg-color, 2%);
+  }
+}
