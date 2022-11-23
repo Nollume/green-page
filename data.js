@@ -208,7 +208,7 @@ export const data = [
     data: [
       {
         headline: "About",
-        index: "01",
+        index: "04",
         mainContent: [
           {
             title: "growth",
@@ -268,7 +268,7 @@ export const data = [
       },
       {
         headline: "About",
-        index: "02",
+        index: "05",
         mainContent: [
           {
             title: "infographic",
@@ -348,7 +348,7 @@ export const data = [
       },
       {
         headline: "About",
-        index: "03",
+        index: "06",
         mainContent: [
           {
             title: "dashboard",
@@ -413,7 +413,7 @@ export const data = [
     data: [
       {
         headline: "Work",
-        index: "01",
+        index: "07",
         mainContent: [
           {
             title: "growth",
@@ -473,7 +473,7 @@ export const data = [
       },
       {
         headline: "Work",
-        index: "02",
+        index: "08",
         mainContent: [
           {
             title: "infographic",
@@ -553,7 +553,7 @@ export const data = [
       },
       {
         headline: "Work",
-        index: "03",
+        index: "09",
         mainContent: [
           {
             title: "dashboard",

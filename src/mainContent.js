@@ -44,6 +44,16 @@ const allSections = data.map((section) => {
                 ${page.arrow}
                 </div>
               </button>
+              <button class="toLeft">
+                <div>
+                ${page.arrow}
+                </div>
+              </button>
+              <button class="toRight">
+                <div>
+                ${page.arrow}
+                </div>
+              </button>
             </div>
             <aside class="tools">
               <h4 class="page-index">${page.index}</h4>
@@ -72,4 +82,3 @@ allSections.map((items, i) => {
 });
 
 export { allSections };
-

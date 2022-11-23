@@ -13,10 +13,14 @@ main {
   grid-template-rows: 1fr 1fr 1fr;
 }
 
-.home-sections[data-active="deactive"] {
+.home-sections[data-active="deactive"],
+.about-sections[data-active="deactive"],
+.work-sections[data-active="deactive"] {
   transform: translateY(-100%);
 }
-.home-sections[data-active="to-bottom"] {
+.home-sections[data-active="to-bottom"],
+.about-sections[data-active="to-bottom"],
+.work-sections[data-active="to-bottom"] {
   transform: translateY(100%);
 }
 //
@@ -94,6 +98,24 @@ main {
 .home section:last-child .image {
   background-image: url("https://ik.imagekit.io/nollume/tr:w-1500/dan-otis-OYFHT4X5isg-unsplash_nnaFKGZXM.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669126364733");
 }
+.about section:first-child .image {
+  background-image: url("https://ik.imagekit.io/nollume/tr:w-1500/geran-de-klerk-WJkc3xZjSXw-unsplash_At_phX5wT.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669043507954");
+}
+.about section:nth-child(2) .image {
+  background-image: url("https://ik.imagekit.io/nollume/tr:w-1500/evgeni-tcherkasski-J37sBRjCSi4-unsplash_TcdJ4YE2E.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669126364525");
+}
+.about section:last-child .image {
+  background-image: url("https://ik.imagekit.io/nollume/tr:w-1500/dan-otis-OYFHT4X5isg-unsplash_nnaFKGZXM.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669126364733");
+}
+.work section:first-child .image {
+  background-image: url("https://ik.imagekit.io/nollume/tr:w-1500/geran-de-klerk-WJkc3xZjSXw-unsplash_At_phX5wT.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669043507954");
+}
+.work section:nth-child(2) .image {
+  background-image: url("https://ik.imagekit.io/nollume/tr:w-1500/evgeni-tcherkasski-J37sBRjCSi4-unsplash_TcdJ4YE2E.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669126364525");
+}
+.work section:last-child .image {
+  background-image: url("https://ik.imagekit.io/nollume/tr:w-1500/dan-otis-OYFHT4X5isg-unsplash_nnaFKGZXM.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669126364733");
+}
 //
 //buttons
 //
@@ -112,29 +134,34 @@ main {
     outline: none;
     border: none;
     cursor: pointer;
+
     &:is(:hover, :active) {
       background-color: darken($bg-color, 2%);
     }
   }
-  & button:first-child {
-    border-right: 0.0625rem solid $border-color;
-    div {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      svg {
-        rotate: 90deg;
-      }
-    }
-  }
-  & button:last-child div {
+  div {
     display: flex;
     align-items: center;
     justify-content: center;
-    svg {
-      rotate: -90deg;
-    }
+  }
+  .toTop {
+    border-right: 0.0625rem solid $border-color;
+  }
+  .toLeft {
+    border-right: 0.0625rem solid $border-color;
+  }
+  .toTop svg {
+    rotate: 90deg;
+  }
+  .toBottom svg {
+    rotate: -90deg;
+  }
+  .toLeft,
+  .toRight {
+    border-top: 0.0625rem solid $border-color;
+  }
+  .toRight svg {
+    rotate: 180deg;
   }
 }
 
