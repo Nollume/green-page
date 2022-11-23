@@ -2,7 +2,9 @@ main {
   flex: 1;
   position: relative;
 }
-.main-section {
+.home-sections,
+.about-sections,
+.work-sections {
   position: absolute;
   inset: 0;
 
@@ -11,10 +13,10 @@ main {
   grid-template-rows: 1fr 1fr 1fr;
 }
 
-.main-section[data-active="deactive"] {
+.home-sections[data-active="deactive"] {
   transform: translateY(-100%);
 }
-.main-section[data-active="to-bottom"] {
+.home-sections[data-active="to-bottom"] {
   transform: translateY(100%);
 }
 //
@@ -32,7 +34,7 @@ main {
   border-right: 0.0625rem solid $border-color;
   h1 {
     max-width: 31.25rem;
-    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-size: clamp(1.5rem, 3vw, 3rem);
 
     text-transform: uppercase;
   }
@@ -83,13 +85,13 @@ main {
   background-repeat: no-repeat;
 }
 
-main section:first-child .image {
+.home section:first-child .image {
   background-image: url("https://ik.imagekit.io/nollume/tr:w-1500/geran-de-klerk-WJkc3xZjSXw-unsplash_At_phX5wT.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669043507954");
 }
-main section:nth-child(2) .image {
+.home section:nth-child(2) .image {
   background-image: url("https://ik.imagekit.io/nollume/tr:w-1500/evgeni-tcherkasski-J37sBRjCSi4-unsplash_TcdJ4YE2E.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669126364525");
 }
-main section:last-child .image {
+.home section:last-child .image {
   background-image: url("https://ik.imagekit.io/nollume/tr:w-1500/dan-otis-OYFHT4X5isg-unsplash_nnaFKGZXM.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669126364733");
 }
 //
