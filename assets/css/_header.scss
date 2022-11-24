@@ -11,8 +11,9 @@ header {
   width: 100%;
 
   z-index: 4;
-  background-color: $bg-color;
-  border-bottom: 0.0625rem solid $border-color;
+
+  border-left: 0.0625rem solid $border-color;
+  border-right: 0.0625rem solid $border-color;
 
   display: grid;
   grid-template-columns: 2fr 2fr 1fr 1fr;

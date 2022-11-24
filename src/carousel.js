@@ -1,76 +1,106 @@
 export class Carousel {
+  static sectionsCurrentIndex = 0;
+  static sectionsLastIndex = null;
+
   constructor(sections) {
     this.sections = sections;
-    this.currentIndex = 0;
+    this.containerCurrentIndex = 0;
+    this.containerLastIndex = null;
     this.transitionTime = 0.25;
-    this.timeoutDuration = this.transitionTime * 1000;
-    this.page = "home";
-    this.lastIndex = null;
+    this.timeOutDuration = this.transitionTime * 1000;
+    this.isAnimated = false;
   }
 
   getNextIndex(direction) {
-    if (this.page === "home") {
-      if (direction === "toBottom") {
-        this.currentIndex === 2 ? (this.currentIndex = 0) : this.currentIndex++;
-      } else {
-        this.currentIndex === 0 ? (this.currentIndex = 2) : this.currentIndex--;
-      }
-    } else if (this.page === "about") {
-      if (direction === "toBottom") {
-        this.currentIndex === 5 ? (this.currentIndex = 3) : this.currentIndex++;
-      } else {
-        this.currentIndex === 3 ? (this.currentIndex = 5) : this.currentIndex--;
-      }
+    if (direction === "toBottom") {
+      Carousel.sectionsCurrentIndex === 2
+        ? (Carousel.sectionsCurrentIndex = 0)
+        : Carousel.sectionsCurrentIndex++;
+    } else if (direction === "toTop") {
+      Carousel.sectionsCurrentIndex === 0
+        ? (Carousel.sectionsCurrentIndex = 2)
+        : Carousel.sectionsCurrentIndex--;
+    } else if (direction === "toRight") {
+      this.containerCurrentIndex === 2
+        ? (this.containerCurrentIndex = 0)
+        : this.containerCurrentIndex++;
     } else {
-      if (direction === "toBottom") {
-        this.currentIndex === 8 ? (this.currentIndex = 6) : this.currentIndex++;
-      } else {
-        this.currentIndex === 6 ? (this.currentIndex = 8) : this.currentIndex--;
-      }
+      this.containerCurrentIndex === 0
+        ? (this.containerCurrentIndex = 2)
+        : this.containerCurrentIndex--;
     }
   }
-  getCurrentPage() {
-    return this.sections.find(
-      (section) => +section.dataset.index === this.currentIndex
-    );
+
+  getCurrentPage(direction) {
+    if (direction === "toTop" || direction === "toBottom") {
+      return this.sections.find(
+        (section) => +section.dataset.index === Carousel.sectionsCurrentIndex
+      );
+    } else {
+      return this.sections.find(
+        (section) => +section.dataset.index === this.containerCurrentIndex
+      );
+    }
   }
-  getPreviousPage() {
-    return this.sections.find(
-      (section) => +section.dataset.index === this.lastIndex
-    );
+
+  getPreviousPage(direction) {
+    if (direction === "toTop" || direction === "toBottom") {
+      return this.sections.find(
+        (section) => +section.dataset.index === this.sectionsLastIndex
+      );
+    } else {
+      return this.sections.find(
+        (section) => +section.dataset.index === this.containerLastIndex
+      );
+    }
   }
+  getPreviousIndex(direction) {
+    if (direction === "toTop" || direction === "toBottom") {
+      this.sectionsLastIndex = Carousel.sectionsCurrentIndex;
+    } else {
+      this.containerLastIndex = this.containerCurrentIndex;
+    }
+  }
+
   setAnimation(direction) {
     this.getPreviousPage(
-      this.lastIndex
+      direction
     ).style.transition = `all ${this.transitionTime}s ease-in`;
-    if (direction === "toBottom") {
-      this.getPreviousPage(this.lastIndex).dataset.active = "to-bottom";
-      this.getCurrentPage().dataset.active = "deactive";
-    } else {
-      this.getPreviousPage(this.lastIndex).dataset.active = "deactive";
-      this.getCurrentPage().dataset.active = "to-bottom";
+    if (direction === "toBottom" || direction === "toRight") {
+      this.getPreviousPage(direction).dataset.active = "oposite-side-deactive";
+      this.getCurrentPage(direction).dataset.active = "deactive";
+    } else if (direction === "toTop" || direction === "toLeft") {
+      this.getPreviousPage(direction).dataset.active = "deactive";
+      this.getCurrentPage(direction).dataset.active = "oposite-side-deactive";
     }
   }
   unsetAnimation(direction) {
-    if (direction === "toBottom") {
-      this.getPreviousPage(this.lastIndex).dataset.active = "deactive";
-      this.getPreviousPage(this.lastIndex).style.transition = "unset";
-    } else {
-      this.getPreviousPage(this.lastIndex).dataset.active = "to-bottom";
-      this.getPreviousPage(this.lastIndex).style.transition = "unset";
+    this.getPreviousPage(direction).style.transition = "unset";
+    if (direction === "toBottom" || direction === "toRight") {
+      this.getPreviousPage(direction).dataset.active = "deactive";
+    } else if (direction === "toTop" || direction === "toLeft") {
+      this.getPreviousPage(direction).dataset.active = "oposite-side-deactive";
     }
   }
-  carousel(direction) {
-    this.lastIndex = this.currentIndex;
-    this.getNextIndex(direction);
-    this.setAnimation(direction);
 
-    setTimeout(() => {
-      this.getCurrentPage().style.transition = `all ${this.transitionTime}s ease-in`;
-      this.getCurrentPage().dataset.active = "active";
-    }, 0);
-    setTimeout(() => {
-      this.unsetAnimation(direction);
-    }, this.timeoutDuration);
+  carousel(direction) {
+    if (this.isAnimated === false) {
+      this.isAnimated = true;
+      this.getPreviousIndex(direction);
+
+      this.getNextIndex(direction);
+      this.setAnimation(direction);
+      setTimeout(() => {
+        this.getCurrentPage(
+          direction
+        ).style.transition = `all ${this.transitionTime}s ease-in`;
+        this.getCurrentPage(direction).dataset.active = "active";
+      }, 0);
+
+      setTimeout(() => {
+        this.unsetAnimation(direction);
+        this.isAnimated = false;
+      }, this.timeOutDuration);
+    }
   }
 }

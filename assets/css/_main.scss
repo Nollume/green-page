@@ -2,6 +2,24 @@ main {
   flex: 1;
   position: relative;
 }
+.home,
+.about,
+.work {
+  position: absolute;
+  inset: 0;
+}
+
+.home[data-active="deactive"],
+.about[data-active="deactive"],
+.work[data-active="deactive"] {
+  transform: translateX(100%);
+  
+}
+.home[data-active="oposite-side-deactive"],
+.about[data-active="oposite-side-deactive"],
+.work[data-active="oposite-side-deactive"] {
+  transform: translateX(-100%);
+}
 .home-sections,
 .about-sections,
 .work-sections {
@@ -18,9 +36,9 @@ main {
 .work-sections[data-active="deactive"] {
   transform: translateY(-100%);
 }
-.home-sections[data-active="to-bottom"],
-.about-sections[data-active="to-bottom"],
-.work-sections[data-active="to-bottom"] {
+.home-sections[data-active="oposite-side-deactive"],
+.about-sections[data-active="oposite-side-deactive"],
+.work-sections[data-active="oposite-side-deactive"] {
   transform: translateY(100%);
 }
 //
