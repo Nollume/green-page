@@ -98,3 +98,15 @@ buttonToRight.forEach((btn) => {
     horizontalCarousel.carousel("toRight");
   });
 });
+
+const contactBtn = document.querySelector(".contact");
+const aside = contactBtn.querySelector("aside");
+const closeBtn = document.querySelector(".close");
+
+contactBtn.onclick = () => {
+  aside.style.transform = "translateX(0)";
+};
+
+closeBtn.onclick = (e) => {
+  aside.style.transform = "translateX(100%)";
+};

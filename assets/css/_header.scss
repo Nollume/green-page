@@ -4,6 +4,15 @@
   gap: 1rem;
   padding: 0.5rem;
 }
+%inputs-style {
+  outline: none;
+  border: 0.0625rem solid $border-color;
+  background-color: transparent;
+  width: 100%;
+  caret-color: $font-color;
+  color: $font-color;
+  padding: 0.25rem;
+}
 //
 // general
 //
@@ -80,9 +89,78 @@ nav > ul a {
   padding-block: 2rem;
   text-transform: uppercase;
   border-left: 0.0625rem solid $border-color;
-  cursor: pointer;
+  user-select: none;
+  position: relative;
 
   &:is(:hover, :active) {
-    background-color: darken($bg-color, 2%);
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  aside {
+    text-transform: capitalize;
+    padding: 2rem;
+    background-color: $bg-color;
+    width: 200%;
+    position: absolute;
+    top: 100%;
+    right: 0;
+
+    transform: translateX(100%);
+
+    font-size: 0.75rem;
+    transition: transform 0.25s ease-in;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 0.5rem;
+      position: relative;
+      padding-top: 1rem;
+
+      .close {
+        position: absolute;
+        top: -1rem;
+        right: -1rem;
+
+        width: 2rem;
+        padding: 0.25rem;
+        aspect-ratio: 1/1;
+        cursor: pointer;
+      }
+      div {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      label {
+        cursor: pointer;
+      }
+      input[type="text"],
+      input[type="email"] {
+        @extend %inputs-style;
+      }
+      textarea {
+        min-width: 100%;
+        max-height: 15rem;
+        resize: vertical;
+        @extend %inputs-style;
+      }
+      & button {
+        cursor: pointer;
+        @extend %inputs-style;
+        padding-block: 0.5rem;
+
+        &:is(:hover, :active) {
+          background-color: rgba(0, 0, 0, 0.1);
+        }
+      }
+      .check-box-container {
+        justify-content: flex-end;
+        flex-direction: row-reverse;
+        white-space: nowrap;
+      }
+    }
   }
 }

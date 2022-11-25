@@ -1,7 +1,7 @@
 body {
   height: 100vh;
   background: $bg-color;
-  background: $gradient;
+  background: $gradient-home;
   font-family: "Alexandria", sans-serif;
   color: $font-color;
   display: flex;
@@ -15,7 +15,7 @@ body {
   position: absolute;
   top: 0;
   background-color: $bg-color;
-  background: $gradient;
+  background: $gradient-home;
   z-index: 1;
 }
 

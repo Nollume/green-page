@@ -1,9 +1,21 @@
 $bg-color: rgb(54, 83, 20);
-$gradient: linear-gradient(
-  90deg, 
+$border-color: rgb(255, 255, 255, 0.1);
+$font-color: #f8fafc;
+
+$gradient-home: linear-gradient(
+  90deg,
   rgba(54, 83, 20, 1) 50%,
   rgba(133, 77, 14, 1) 100%
 );
-$border-color: rgb(255, 255, 255, 0.1);
-$font-color: #f8fafc;
-$accent-coloe: #854d0e;
+
+$gradient-about: linear-gradient(
+  90deg,
+  rgba(127, 29, 29, 1) 50%,
+  rgba(271, 119, 6, 1) 100%
+);
+$gradient-work: linear-gradient(
+  90deg,
+  rgba(49, 46, 129, 1) 50%,
+  rgb(88 28 135) 100%
+);
+

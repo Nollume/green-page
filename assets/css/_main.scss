@@ -1,6 +1,7 @@
 main {
   flex: 1;
   position: relative;
+  
 }
 .home,
 .about,
@@ -117,22 +118,22 @@ main {
   background-image: url("https://ik.imagekit.io/nollume/tr:w-1500/dan-otis-OYFHT4X5isg-unsplash_nnaFKGZXM.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669126364733");
 }
 .about section:first-child .image {
-  background-image: url("https://ik.imagekit.io/nollume/tr:w-1500/geran-de-klerk-WJkc3xZjSXw-unsplash_At_phX5wT.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669043507954");
+  background-image: url("https://ik.imagekit.io/nollume/v2osk-IHKBF23A_iw-unsplash_pWLeQx_c57.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392218350");
 }
 .about section:nth-child(2) .image {
-  background-image: url("https://ik.imagekit.io/nollume/tr:w-1500/evgeni-tcherkasski-J37sBRjCSi4-unsplash_TcdJ4YE2E.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669126364525");
+  background-image: url("https://ik.imagekit.io/nollume/v2osk-1Z2niiBPg5A-unsplash_NRK-mm6P0.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392218145");
 }
 .about section:last-child .image {
-  background-image: url("https://ik.imagekit.io/nollume/tr:w-1500/dan-otis-OYFHT4X5isg-unsplash_nnaFKGZXM.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669126364733");
+  background-image: url("https://ik.imagekit.io/nollume/brandon-green-hdQWZBk45rY-unsplash_ipCSCeIpH.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392218043");
 }
 .work section:first-child .image {
-  background-image: url("https://ik.imagekit.io/nollume/tr:w-1500/geran-de-klerk-WJkc3xZjSXw-unsplash_At_phX5wT.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669043507954");
+  background-image: url("https://ik.imagekit.io/nollume/jaromir-kavan-vv-oEGlN-4E-unsplash_gPlmR8g5v.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392217033");
 }
 .work section:nth-child(2) .image {
-  background-image: url("https://ik.imagekit.io/nollume/tr:w-1500/evgeni-tcherkasski-J37sBRjCSi4-unsplash_TcdJ4YE2E.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669126364525");
+  background-image: url("/public/img/kristopher-roller-zepnJQycr4U-unsplash.jpg");
 }
 .work section:last-child .image {
-  background-image: url("https://ik.imagekit.io/nollume/tr:w-1500/dan-otis-OYFHT4X5isg-unsplash_nnaFKGZXM.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669126364733");
+  background-image: url("/public/img/mark-basarab-1OtUkD_8svc-unsplash.jpg");
 }
 //
 //buttons
@@ -154,7 +155,7 @@ main {
     cursor: pointer;
 
     &:is(:hover, :active) {
-      background-color: darken($bg-color, 2%);
+      background-color: rgba(0,0,0,.1);
     }
   }
   div {
