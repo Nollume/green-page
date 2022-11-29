@@ -1,14 +1,14 @@
 export class Carousel {
   static sectionsCurrentIndex = 0;
   static sectionsLastIndex = null;
-
+  static isAnimated = false;
+  
   constructor(sections) {
     this.sections = sections;
     this.containerCurrentIndex = 0;
     this.containerLastIndex = null;
     this.transitionTime = 0.25;
     this.timeOutDuration = this.transitionTime * 1000;
-    this.isAnimated = false;
   }
 
   getNextIndex(direction) {
@@ -84,8 +84,8 @@ export class Carousel {
   }
 
   carousel(direction) {
-    if (this.isAnimated === false) {
-      this.isAnimated = true;
+    if (Carousel.isAnimated === false) {
+      Carousel.isAnimated = true;
       this.getPreviousIndex(direction);
 
       this.getNextIndex(direction);
@@ -99,8 +99,78 @@ export class Carousel {
 
       setTimeout(() => {
         this.unsetAnimation(direction);
-        this.isAnimated = false;
+        Carousel.isAnimated = false;
       }, this.timeOutDuration);
+    }
+  }
+}
+
+export class HorizontalCarousel {
+  constructor() {
+    this.currentChilds = [];
+    this.isAnimated = false;
+  }
+  getPreviousSection(event) {
+    return event.target.closest(".main-container");
+  }
+  getPreviousElChildrens(event) {
+    return Array.from(this.getPreviousSection(event).children);
+  }
+  getActivePreviousChild(event) {
+    return this.getPreviousElChildrens(event).find(
+      (child) => child.dataset.active === "active"
+    );
+  }
+  getPreviousSectionChildIndex(event) {
+    return +this.getActivePreviousChild(event).dataset.index;
+  }
+  getCurrentActiveChild(event) {
+    return this.currentChilds.find(
+      (el) => +el.dataset.index === this.getPreviousSectionChildIndex(event)
+    );
+  }
+  unsetChildrenEl(event) {
+    this.getPreviousElChildrens(event).forEach(
+      (child) => (child.dataset.active = "deactive")
+    );
+  }
+  setDirection(event, direction) {
+    if (direction === "toRight") {
+      if (+this.getPreviousSection(event).dataset.index !== 2) {
+        this.currentChilds = Array.from(
+          this.getPreviousSection(event).nextElementSibling.children
+        );
+      } else {
+        this.currentChilds = Array.from(
+          this.getPreviousSection(event).parentElement.firstElementChild
+            .children
+        );
+      }
+    } else {
+      if (+this.getPreviousSection(event).dataset.index !== 0) {
+        this.currentChilds = Array.from(
+          this.getPreviousSection(event).previousElementSibling.children
+        );
+      } else {
+        this.currentChilds = Array.from(
+          this.getPreviousSection(event).parentElement.lastElementChild.children
+        );
+      }
+    }
+  }
+
+  carouselHorizontal(event, direction) {
+    if (this.isAnimated === false) {
+      this.isAnimated = true;
+
+      this.getActivePreviousChild(event).style.transition = "unset";
+      this.setDirection(event, direction);
+      this.getCurrentActiveChild(event).dataset.active = "active";
+
+      setTimeout(() => {
+        this.unsetChildrenEl(event);
+        this.isAnimated = false;
+      }, 250);
     }
   }
 }

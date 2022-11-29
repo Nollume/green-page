@@ -34,17 +34,17 @@ const allSections = data.map((section) => {
               </ul>
             </article>
             <div class="buttons">
-              <button class="toTop">
+              <button class="toBottom">
                 <div>
                   ${page.arrow}
                 </div>
               </button>
-              <button class="toBottom">
+              <button class="toLeft">
                 <div>
                 ${page.arrow}
                 </div>
               </button>
-              <button class="toLeft">
+              <button class="toTop">
                 <div>
                 ${page.arrow}
                 </div>

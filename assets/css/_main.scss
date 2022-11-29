@@ -1,20 +1,19 @@
 main {
   flex: 1;
   position: relative;
-  
 }
 .home,
 .about,
 .work {
   position: absolute;
   inset: 0;
+  will-change: transform;
 }
 
 .home[data-active="deactive"],
 .about[data-active="deactive"],
 .work[data-active="deactive"] {
   transform: translateX(100%);
-  
 }
 .home[data-active="oposite-side-deactive"],
 .about[data-active="oposite-side-deactive"],
@@ -24,6 +23,7 @@ main {
 .home-sections,
 .about-sections,
 .work-sections {
+  will-change: transform;
   position: absolute;
   inset: 0;
 
@@ -130,10 +130,10 @@ main {
   background-image: url("https://ik.imagekit.io/nollume/jaromir-kavan-vv-oEGlN-4E-unsplash_gPlmR8g5v.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392217033");
 }
 .work section:nth-child(2) .image {
-  background-image: url("/public/img/kristopher-roller-zepnJQycr4U-unsplash.jpg");
+  background-image: url("/img/kristopher-roller-zepnJQycr4U-unsplash.jpg");
 }
 .work section:last-child .image {
-  background-image: url("/public/img/mark-basarab-1OtUkD_8svc-unsplash.jpg");
+  background-image: url("/img/mark-basarab-1OtUkD_8svc-unsplash.jpg");
 }
 //
 //buttons
@@ -155,7 +155,7 @@ main {
     cursor: pointer;
 
     &:is(:hover, :active) {
-      background-color: rgba(0,0,0,.1);
+      background-color: rgba(0, 0, 0, 0.1);
     }
   }
   div {
@@ -166,17 +166,18 @@ main {
   .toTop {
     border-right: 0.0625rem solid $border-color;
   }
-  .toLeft {
+  .toBottom {
     border-right: 0.0625rem solid $border-color;
   }
   .toTop svg {
-    rotate: 90deg;
-  }
-  .toBottom svg {
     rotate: -90deg;
   }
-  .toLeft,
-  .toRight {
+  .toBottom svg {
+    rotate: 90deg;
+    
+  }
+  .toRight,
+  .toTop {
     border-top: 0.0625rem solid $border-color;
   }
   .toRight svg {

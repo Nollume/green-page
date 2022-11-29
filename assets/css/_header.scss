@@ -55,17 +55,63 @@ header .logo {
 // nav
 //
 nav {
-  display: flex;
-  justify-content: center;
   border-left: 0.0625rem solid $border-color;
-  padding-block: 2rem;
+  display: flex;
+
   width: 100%;
+  font-size: 0.75rem;
 }
-nav > ul {
-  @extend %center-flex;
-}
-nav > ul a {
+
+nav ul {
   text-transform: uppercase;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  & li:first-child {
+    border-right: 0.0625rem solid $border-color;
+  }
+  li:last-child {
+    border-left: 0.0625rem solid $border-color;
+  }
+
+  li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+
+    div {
+      display: flex;
+      flex-grow: 1;
+      width: 100%;
+
+      &:is(:hover, :active):not([data-is-active="active"]) {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+    }
+    div:first-child {
+      border-bottom: 0.0625rem solid $border-color;
+    }
+    div:last-child {
+      border-top: 0.0625rem solid $border-color;
+    }
+
+    a {
+      text-align: center;
+      padding: auto;
+      line-height: 1.25rem;
+      flex-grow: 1;
+    }
+  }
+}
+
+div[data-is-active="active"] {
+  background-color: $accent-color;
+  &:is(:hover, :active) {
+    background-color: darken($accent-color, 5%);
+  }
 }
 
 //
