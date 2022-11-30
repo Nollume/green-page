@@ -9,7 +9,8 @@ import {
   findActiveSection,
 } from "./src/general";
 import { Carousel, HorizontalCarousel } from "./src/carousel";
-import { handleNavigaion, moveToside } from "./src/navigation";
+import { NavigationMoveToSides, NavigationMove } from "./src/navigation";
+import { ContactClass } from "./src/contact";
 
 document.querySelector("#app").innerHTML = `
  ${getHeader(logo)}
@@ -48,64 +49,76 @@ const homePages = new Carousel(homeSections);
 const aboutPages = new Carousel(aboutSections);
 const workPages = new Carousel(workSections);
 const animatedHorizontalCarousel = new Carousel(mainContainers);
-const handleHorizontalCarousel = new HorizontalCarousel();
-
+const handleHorizontalCarousel = new HorizontalCarousel(mainContainers);
+const moveNav = new NavigationMove(mainNav);
+const moveNavToSides = new NavigationMoveToSides(mainNav);
+let timer = false;
 buttonToBottom.forEach((btn) => {
   btn.addEventListener("click", () => {
-    if (findActiveSection(mainContainers).dataset.page === "home") {
-      homePages.carousel("toBottom");
-    } else if (findActiveSection(mainContainers).dataset.page === "about") {
-      aboutPages.carousel("toBottom");
-    } else {
-      workPages.carousel("toBottom");
+    if (timer === false) {
+      timer = true;
+      if (findActiveSection(mainContainers).dataset.page === "home") {
+        homePages.carousel("toBottom");
+      } else if (findActiveSection(mainContainers).dataset.page === "about") {
+        aboutPages.carousel("toBottom");
+      } else {
+        workPages.carousel("toBottom");
+      }
+      moveNav.handleNavigaion("toBottom");
+      setTimeout(() => {
+        timer = false;
+      }, 250);
     }
-
-    handleNavigaion(mainNav, "toBottom");
   });
 });
 buttonToTop.forEach((btn) => {
   btn.addEventListener("click", () => {
-    if (findActiveSection(mainContainers).dataset.page === "home") {
-      homePages.carousel("toTop");
-    } else if (findActiveSection(mainContainers).dataset.page === "about") {
-      aboutPages.carousel("toTop");
-    } else {
-      workPages.carousel("toTop");
+    if (timer === false) {
+      timer = true;
+      if (findActiveSection(mainContainers).dataset.page === "home") {
+        homePages.carousel("toTop");
+      } else if (findActiveSection(mainContainers).dataset.page === "about") {
+        aboutPages.carousel("toTop");
+      } else {
+        workPages.carousel("toTop");
+      }
+      moveNav.handleNavigaion("toTop");
+      setTimeout(() => {
+        timer = false;
+      }, 250);
     }
-
-    handleNavigaion(mainNav, "toTop");
   });
 });
 buttonToLeft.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    handleHorizontalCarousel.carouselHorizontal(e, "toLeft");
-    animatedHorizontalCarousel.carousel("toLeft");
-    moveToside(mainNav, "toLeft");
+  btn.addEventListener("click", () => {
+    if (timer === false) {
+      timer = true;
+      handleHorizontalCarousel.carouselHorizontal("toLeft");
+
+      animatedHorizontalCarousel.carousel("toLeft");
+      moveNavToSides.moveToside("toLeft");
+      setTimeout(() => {
+        timer = false;
+      }, 250);
+    }
   });
 });
 buttonToRight.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    handleHorizontalCarousel.carouselHorizontal(e, "toRight");
-    animatedHorizontalCarousel.carousel("toRight");
-    moveToside(mainNav, "toRight");
+  btn.addEventListener("click", () => {
+    if (timer === false) {
+      timer = true;
+      handleHorizontalCarousel.carouselHorizontal("toRight");
+
+      animatedHorizontalCarousel.carousel("toRight");
+      moveNavToSides.moveToside("toRight");
+      setTimeout(() => {
+        timer = false;
+      }, 250);
+    }
   });
 });
 
-const contactBtn = document.querySelector(".contact");
-const aside = contactBtn.querySelector("aside");
-const closeBtn = document.querySelector(".close");
-
-contactBtn.onclick = () => {
-  aside.style.transform = "translateX(0)";
-};
-
-closeBtn.onclick = (e) => {
-  e.stopPropagation();
-  aside.style.transform = "translateX(100%)";
-};
-
-document.addEventListener("click", (e) => {
-  if (e.target === contactBtn || e.target.closest(".contact")) {
-    return;
-  } else aside.style.transform = "translateX(100%)";
-});
+const contact = new ContactClass();
+contact.showContactForm();
+contact.closeContactForm();
+contact.closeIfClickOnDocument();

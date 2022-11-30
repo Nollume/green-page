@@ -86,10 +86,6 @@ nav ul {
       display: flex;
       flex-grow: 1;
       width: 100%;
-
-      &:is(:hover, :active):not([data-is-active="active"]) {
-        background-color: rgba(0, 0, 0, 0.1);
-      }
     }
     div:first-child {
       border-bottom: 0.0625rem solid $border-color;
@@ -99,6 +95,7 @@ nav ul {
     }
 
     a {
+      cursor: default;
       text-align: center;
       padding: auto;
       line-height: 1.25rem;
@@ -109,9 +106,6 @@ nav ul {
 
 div[data-is-active="active"] {
   background-color: $accent-color;
-  &:is(:hover, :active) {
-    background-color: darken($accent-color, 5%);
-  }
 }
 
 //
@@ -208,5 +202,11 @@ div[data-is-active="active"] {
         white-space: nowrap;
       }
     }
+  }
+}
+
+@media (max-width: 80rem) {
+  header {
+    grid-template-columns: 1fr 2fr 1fr 1fr;
   }
 }

@@ -118,16 +118,16 @@ main {
   background-image: url("https://ik.imagekit.io/nollume/tr:w-1500/dan-otis-OYFHT4X5isg-unsplash_nnaFKGZXM.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669126364733");
 }
 .about section:first-child .image {
-  background-image: url("https://ik.imagekit.io/nollume/v2osk-IHKBF23A_iw-unsplash_pWLeQx_c57.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392218350");
+  background-image: url("https://ik.imagekit.io/nollume/tr:w-1500/v2osk-IHKBF23A_iw-unsplash_pWLeQx_c57.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392218350");
 }
 .about section:nth-child(2) .image {
-  background-image: url("https://ik.imagekit.io/nollume/v2osk-1Z2niiBPg5A-unsplash_NRK-mm6P0.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392218145");
+  background-image: url("https://ik.imagekit.io/nollume/tr:w-1500/v2osk-1Z2niiBPg5A-unsplash_NRK-mm6P0.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392218145");
 }
 .about section:last-child .image {
-  background-image: url("https://ik.imagekit.io/nollume/brandon-green-hdQWZBk45rY-unsplash_ipCSCeIpH.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392218043");
+  background-image: url("https://ik.imagekit.io/nollume/tr:w-1500/brandon-green-hdQWZBk45rY-unsplash_ipCSCeIpH.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392218043");
 }
 .work section:first-child .image {
-  background-image: url("https://ik.imagekit.io/nollume/jaromir-kavan-vv-oEGlN-4E-unsplash_gPlmR8g5v.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392217033");
+  background-image: url("https://ik.imagekit.io/nollume/tr:w-1500/jaromir-kavan-vv-oEGlN-4E-unsplash_gPlmR8g5v.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392217033");
 }
 .work section:nth-child(2) .image {
   background-image: url("/img/kristopher-roller-zepnJQycr4U-unsplash.jpg");
@@ -174,7 +174,6 @@ main {
   }
   .toBottom svg {
     rotate: 90deg;
-    
   }
   .toRight,
   .toTop {
@@ -201,5 +200,66 @@ main {
   .page-index {
     font-size: 2rem;
     line-height: 2rem;
+  }
+}
+
+@media (max-width: 80rem) {
+  .headline {
+    .logo {
+      display: none;
+    }
+  }
+  .home section:first-child .image {
+    background-image: url("https://ik.imagekit.io/nollume/tr:w-1200/geran-de-klerk-WJkc3xZjSXw-unsplash_At_phX5wT.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669043507954");
+  }
+  .home section:nth-child(2) .image {
+    background-image: url("https://ik.imagekit.io/nollume/tr:w-1200/evgeni-tcherkasski-J37sBRjCSi4-unsplash_TcdJ4YE2E.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669126364525");
+  }
+  .home section:last-child .image {
+    background-image: url("https://ik.imagekit.io/nollume/tr:w-1200/dan-otis-OYFHT4X5isg-unsplash_nnaFKGZXM.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669126364733");
+  }
+  .about section:first-child .image {
+    background-image: url("https://ik.imagekit.io/nollume/tr:w-1200/v2osk-IHKBF23A_iw-unsplash_pWLeQx_c57.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392218350");
+  }
+  .about section:nth-child(2) .image {
+    background-image: url("https://ik.imagekit.io/nollume/tr:w-1200/v2osk-1Z2niiBPg5A-unsplash_NRK-mm6P0.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392218145");
+  }
+  .about section:last-child .image {
+    background-image: url("https://ik.imagekit.io/nollume/tr:w-1200/brandon-green-hdQWZBk45rY-unsplash_ipCSCeIpH.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392218043");
+  }
+  .work section:first-child .image {
+    background-image: url("https://ik.imagekit.io/nollume/tr:w-1200/jaromir-kavan-vv-oEGlN-4E-unsplash_gPlmR8g5v.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392217033");
+  }
+  .work section:nth-child(2) .image {
+    background-image: url("/img/kristopher-roller-zepnJQycr4U-unsplash.jpg");
+  }
+  .work section:last-child .image {
+    background-image: url("/img/mark-basarab-1OtUkD_8svc-unsplash.jpg");
+  }
+}
+
+@media (max-width: 67.5rem) {
+  .main-content {
+    align-items: center;
+    ul {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 48.75rem) {
+  .home-sections,
+  .about-sections,
+  .work-sections {
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+  }
+  .main-content {
+    grid-column-start: 1;
+    grid-column-end: 7;
+  }
+  .buttons {
+    grid-column-start: 1;
+    grid-column-end: 7;
+    grid-row-start: 4;
   }
 }

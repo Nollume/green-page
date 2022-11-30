@@ -2,7 +2,7 @@ export class Carousel {
   static sectionsCurrentIndex = 0;
   static sectionsLastIndex = null;
   static isAnimated = false;
-  
+
   constructor(sections) {
     this.sections = sections;
     this.containerCurrentIndex = 0;
@@ -76,6 +76,7 @@ export class Carousel {
   }
   unsetAnimation(direction) {
     this.getPreviousPage(direction).style.transition = "unset";
+
     if (direction === "toBottom" || direction === "toRight") {
       this.getPreviousPage(direction).dataset.active = "deactive";
     } else if (direction === "toTop" || direction === "toLeft") {
@@ -106,70 +107,71 @@ export class Carousel {
 }
 
 export class HorizontalCarousel {
-  constructor() {
-    this.currentChilds = [];
+  constructor(mainContainers) {
+    this.mainContainers = mainContainers;
     this.isAnimated = false;
+    this.activeChild;
   }
-  getPreviousSection(event) {
-    return event.target.closest(".main-container");
+  getPreviousSection() {
+    return this.mainContainers.find(
+      (section) => section.dataset.active === "active"
+    );
   }
-  getPreviousElChildrens(event) {
-    return Array.from(this.getPreviousSection(event).children);
+  getPreviousElChildrens() {
+    return Array.from(this.getPreviousSection().children);
   }
-  getActivePreviousChild(event) {
-    return this.getPreviousElChildrens(event).find(
+  getActivePreviousChild() {
+    return this.getPreviousElChildrens().find(
       (child) => child.dataset.active === "active"
     );
   }
-  getPreviousSectionChildIndex(event) {
-    return +this.getActivePreviousChild(event).dataset.index;
+  setActiveChild(el, activeDivIndex) {
+    Array.from(el.children).find(
+      (child) => child.dataset.index === activeDivIndex
+    ).dataset.active = "active";
   }
-  getCurrentActiveChild(event) {
-    return this.currentChilds.find(
-      (el) => +el.dataset.index === this.getPreviousSectionChildIndex(event)
+
+  setDirection(direction) {
+    this.activeChild = this.getPreviousElChildrens().find(
+      (child) => child.dataset.active === "active"
     );
-  }
-  unsetChildrenEl(event) {
-    this.getPreviousElChildrens(event).forEach(
-      (child) => (child.dataset.active = "deactive")
-    );
-  }
-  setDirection(event, direction) {
-    if (direction === "toRight") {
-      if (+this.getPreviousSection(event).dataset.index !== 2) {
-        this.currentChilds = Array.from(
-          this.getPreviousSection(event).nextElementSibling.children
+    const index = this.activeChild.dataset.index;
+
+    if (direction === "toLeft") {
+      if (+this.getPreviousSection().dataset.index !== 0) {
+        this.setActiveChild(
+          this.activeChild.parentElement.previousElementSibling,
+          index
         );
       } else {
-        this.currentChilds = Array.from(
-          this.getPreviousSection(event).parentElement.firstElementChild
-            .children
+        this.setActiveChild(
+          this.activeChild.parentElement.parentElement.lastElementChild,
+          index
         );
       }
     } else {
-      if (+this.getPreviousSection(event).dataset.index !== 0) {
-        this.currentChilds = Array.from(
-          this.getPreviousSection(event).previousElementSibling.children
+      if (+this.getPreviousSection().dataset.index !== 2) {
+        this.setActiveChild(
+          this.activeChild.parentElement.nextElementSibling,
+          index
         );
       } else {
-        this.currentChilds = Array.from(
-          this.getPreviousSection(event).parentElement.lastElementChild.children
+        this.setActiveChild(
+          this.activeChild.parentElement.parentElement.firstElementChild,
+          index
         );
       }
     }
   }
-
-  carouselHorizontal(event, direction) {
+  carouselHorizontal(direction) {
     if (this.isAnimated === false) {
       this.isAnimated = true;
-
-      this.getActivePreviousChild(event).style.transition = "unset";
-      this.setDirection(event, direction);
-      this.getCurrentActiveChild(event).dataset.active = "active";
+      this.getActivePreviousChild().style.transition = "unset";
+      this.setDirection(direction);
 
       setTimeout(() => {
-        this.unsetChildrenEl(event);
         this.isAnimated = false;
+        this.activeChild.dataset.active = "deactive";
       }, 250);
     }
   }
