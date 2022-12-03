@@ -1,25 +1,29 @@
 export class ContactClass {
   constructor() {
-    this.contactBtn = document.querySelector(".contact");
-    this.aside = this.contactBtn.querySelector("aside");
-    this.closeBtn = document.querySelector(".close");
+    this.contactBtnHeader = document.querySelector(".contact");
+    this.asideHeader = this.contactBtnHeader.querySelector("aside");
+    this.closeBtnHeader = document.querySelector(".close");
+    this.contactBtnMain = document.getElementsByClassName(".contact")[1];
+    // this.asideMain = this.contactBtnMain.querySelector("aside");
+    // this.closeBtnMain = this.contactBtnMain.querySelector(".close");
   }
   showContactForm() {
-    this.contactBtn.onclick = () => {
-      this.aside.style.transform = "translateX(0)";
+    this.contactBtnHeader.onclick = () => {
+      this.asideHeader.style.transform = "translateX(0)";
     };
+    
   }
   closeContactForm() {
-    this.closeBtn.onclick = (e) => {
+    this.closeBtnHeader.onclick = (e) => {
       e.stopPropagation();
-      this.aside.style.transform = "translateX(100%)";
+      this.asideHeader.style.transform = "translateX(101%)";
     };
   }
   closeIfClickOnDocument() {
     document.addEventListener("click", (e) => {
-      if (e.target === this.contactBtn || e.target.closest(".contact")) {
+      if (e.target === this.contactBtnHeader || e.target.closest(".contact")) {
         return;
-      } else this.aside.style.transform = "translateX(100%)";
+      } else this.asideHeader.style.transform = "translateX(101%)";
     });
   }
 }

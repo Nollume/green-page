@@ -40,3 +40,9 @@ ul {
     color: $font-color;
   }
 }
+
+@media (max-width: 48.75rem) {
+  .header-overlap {
+    height: 6.875rem;
+  }
+}

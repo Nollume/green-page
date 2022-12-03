@@ -1,6 +1,6 @@
 import "./assets/css/Restart.scss";
 import "./assets/css/style.scss";
-import logo from "./src/logo";
+import { logo, socialIcons, contact as HeaderContact } from "./src/logo";
 import getHeader from "./src/headerContent";
 import { allSections } from "./src/mainContent";
 import {
@@ -13,7 +13,7 @@ import { NavigationMoveToSides, NavigationMove } from "./src/navigation";
 import { ContactClass } from "./src/contact";
 
 document.querySelector("#app").innerHTML = `
- ${getHeader(logo)}
+ ${getHeader(logo, socialIcons, HeaderContact)}
   <main>
     <section class="home main-container"></section>
     <section class="about main-container"></section>

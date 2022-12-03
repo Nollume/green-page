@@ -1,5 +1,5 @@
 import { data } from "../data";
-import logo from "./logo";
+import { logo, socialIcons, contact } from "./logo";
 const createLiElements = (arr) => {
   return arr.map((item) => {
     const items = [
@@ -64,7 +64,10 @@ const allSections = data.map((section) => {
                 <p>Publications & Research</p>
               </div>
             </aside>
-            <div class="image"></div>
+            <div class="image">
+                ${socialIcons}
+            </div>
+                ${contact}
    `.trim();
     return sections;
   });

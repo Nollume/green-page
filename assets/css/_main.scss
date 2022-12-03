@@ -2,6 +2,9 @@ main {
   flex: 1;
   position: relative;
 }
+main .contact {
+  display: none;
+}
 .home,
 .about,
 .work {
@@ -14,11 +17,13 @@ main {
 .about[data-active="deactive"],
 .work[data-active="deactive"] {
   transform: translateX(100%);
+  visibility: hidden;
 }
 .home[data-active="oposite-side-deactive"],
 .about[data-active="oposite-side-deactive"],
 .work[data-active="oposite-side-deactive"] {
   transform: translateX(-100%);
+  visibility: hidden;
 }
 .home-sections,
 .about-sections,
@@ -35,12 +40,14 @@ main {
 .home-sections[data-active="deactive"],
 .about-sections[data-active="deactive"],
 .work-sections[data-active="deactive"] {
+  visibility: hidden;
   transform: translateY(-100%);
 }
 .home-sections[data-active="oposite-side-deactive"],
 .about-sections[data-active="oposite-side-deactive"],
 .work-sections[data-active="oposite-side-deactive"] {
   transform: translateY(100%);
+  visibility: hidden;
 }
 //
 //HEADLINE
@@ -57,7 +64,7 @@ main {
   border-right: 0.0625rem solid $border-color;
   h1 {
     max-width: 31.25rem;
-    font-size: clamp(1.5rem, 3vw, 3rem);
+    font-size: clamp(0.875rem, 3vw, 3rem);
 
     text-transform: uppercase;
   }
@@ -106,6 +113,10 @@ main {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+
+  ul {
+    display: none;
+  }
 }
 
 .home section:first-child .image {
@@ -230,12 +241,6 @@ main {
   .work section:first-child .image {
     background-image: url("https://ik.imagekit.io/nollume/tr:w-1200/jaromir-kavan-vv-oEGlN-4E-unsplash_gPlmR8g5v.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392217033");
   }
-  .work section:nth-child(2) .image {
-    background-image: url("/img/kristopher-roller-zepnJQycr4U-unsplash.jpg");
-  }
-  .work section:last-child .image {
-    background-image: url("/img/mark-basarab-1OtUkD_8svc-unsplash.jpg");
-  }
 }
 
 @media (max-width: 67.5rem) {
@@ -256,10 +261,135 @@ main {
   .main-content {
     grid-column-start: 1;
     grid-column-end: 7;
+    padding: 0;
   }
   .buttons {
     grid-column-start: 1;
     grid-column-end: 7;
+    grid-row-start: 4;
+  }
+  .headline {
+    padding-inline: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .image {
+    display: flex;
+    align-items: center;
+    ul {
+      display: block;
+      border-left: none;
+      padding: 0.5rem;
+    }
+  }
+  .home section:first-child .image {
+    background-image: url("https://ik.imagekit.io/nollume/tr:w-800/geran-de-klerk-WJkc3xZjSXw-unsplash_At_phX5wT.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669043507954");
+  }
+  .home section:nth-child(2) .image {
+    background-image: url("https://ik.imagekit.io/nollume/tr:w-800/evgeni-tcherkasski-J37sBRjCSi4-unsplash_TcdJ4YE2E.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669126364525");
+  }
+  .home section:last-child .image {
+    background-image: url("https://ik.imagekit.io/nollume/tr:w-800/dan-otis-OYFHT4X5isg-unsplash_nnaFKGZXM.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669126364733");
+  }
+  .about section:first-child .image {
+    background-image: url("https://ik.imagekit.io/nollume/tr:w-800/v2osk-IHKBF23A_iw-unsplash_pWLeQx_c57.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392218350");
+  }
+  .about section:nth-child(2) .image {
+    background-image: url("https://ik.imagekit.io/nollume/tr:w-800/v2osk-1Z2niiBPg5A-unsplash_NRK-mm6P0.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392218145");
+  }
+  .about section:last-child .image {
+    background-image: url("https://ik.imagekit.io/nollume/tr:w-800/brandon-green-hdQWZBk45rY-unsplash_ipCSCeIpH.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392218043");
+  }
+  .work section:first-child .image {
+    background-image: url("https://ik.imagekit.io/nollume/tr:w-800/jaromir-kavan-vv-oEGlN-4E-unsplash_gPlmR8g5v.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392217033");
+  }
+  .tools {
+    padding: 1rem;
+
+    .page-index {
+      font-size: 1.5rem;
+      line-height: 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 41.875rem) {
+  main .contact {
+    display: flex;
+    grid-row-start: 1;
+    grid-column: 4/7;
+    border-top: 0.0625rem solid $border-color;
+  }
+  .home section:first-child .image {
+    background-image: url("https://ik.imagekit.io/nollume/tr:w-450/geran-de-klerk-WJkc3xZjSXw-unsplash_At_phX5wT.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669043507954");
+  }
+  .home section:nth-child(2) .image {
+    background-image: url("https://ik.imagekit.io/nollume/tr:w-450/evgeni-tcherkasski-J37sBRjCSi4-unsplash_TcdJ4YE2E.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669126364525");
+  }
+  .home section:last-child .image {
+    background-image: url("https://ik.imagekit.io/nollume/tr:w-450/dan-otis-OYFHT4X5isg-unsplash_nnaFKGZXM.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669126364733");
+  }
+  .about section:first-child .image {
+    background-image: url("https://ik.imagekit.io/nollume/tr:w-450/v2osk-IHKBF23A_iw-unsplash_pWLeQx_c57.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392218350");
+  }
+  .about section:nth-child(2) .image {
+    background-image: url("https://ik.imagekit.io/nollume/tr:w-450/v2osk-1Z2niiBPg5A-unsplash_NRK-mm6P0.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392218145");
+  }
+  .about section:last-child .image {
+    background-image: url("https://ik.imagekit.io/nollume/tr:w-450/brandon-green-hdQWZBk45rY-unsplash_ipCSCeIpH.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392218043");
+  }
+  .work section:first-child .image {
+    background-image: url("https://ik.imagekit.io/nollume/tr:w-450/jaromir-kavan-vv-oEGlN-4E-unsplash_gPlmR8g5v.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669392217033");
+  }
+  .image {
+    grid-column-end: 4;
+  }
+  .buttons {
+    grid-row: 2;
+    grid-column: 4/7;
+  }
+  .main-content {
+    border-bottom: 0.0625rem solid $border-color;
+  }
+  .tools {
+    font-size: 0.75rem;
+
+    p {
+      white-space: nowrap;
+    }
+  }
+}
+
+@media (max-width: 31.25rem) {
+  .home-sections,
+  .about-sections,
+  .work-sections {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .main-content {
+    h3 {
+      margin-bottom: 0.1rem;
+      font-size: 0.875rem;
+    }
+    p {
+      font-size: 0.75rem;
+      opacity: 0.5;
+    }
+
+    ul {
+      grid-template-columns: 1fr;
+    }
+
+    li {
+      align-items: center;
+    }
+  }
+}
+
+@media (max-width: 25rem) {
+  .tools {
     grid-row-start: 4;
   }
 }
